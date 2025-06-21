@@ -2,7 +2,7 @@
 
 Um mapa-múndi interativo que visualiza a cada 30 minutos a distribuição de nós (nodes) acessíveis da rede Bitcoin por país, utilizando dados da API da Bitnodes.
 
-![Demo do Projeto](https://i.imgur.com/FwR1L2p.png)
+![Demo do Projeto](./.github/assets/btc-node-map-demo.png)
 
 ---
 
