@@ -1,7 +1,7 @@
 package com.luizsolely.btcnodemap.controller;
 
 import com.luizsolely.btcnodemap.domain.CountryNodeInfo;
-import com.luizsolely.btcnodemap.domain.CountryNodeResponse;
+import com.luizsolely.btcnodemap.domain.CountryNodeInfoResponse;
 import com.luizsolely.btcnodemap.service.BitnodesService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +21,9 @@ public class BitnodesController {
     }
 
     @GetMapping("/nodesByCountry")
-    public ResponseEntity<CountryNodeResponse> nodesByCountry() {
+    public ResponseEntity<CountryNodeInfoResponse> nodesByCountry() {
         List<CountryNodeInfo> nodes =  bitnodesService.getNodesByCountry();
-        CountryNodeResponse response = new CountryNodeResponse(
+        CountryNodeInfoResponse response = new CountryNodeInfoResponse(
                 Instant.now(),
                 HttpStatus.OK.value(),
                 nodes
