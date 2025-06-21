@@ -48,8 +48,8 @@ Para executar a aplicação, você precisa ter o **Docker** e o **Docker Compose
 1.  **Clone o Repositório**
 
     ```bash
-    git clone [https://github.com/luizsolely/btc-node-map.git](https://github.com/luizsolely/btc-node-map.git)
-    cd seu-repositorio
+    git clone https://github.com/luizsolely/btc-node-map.git
+    cd btc-node-map
     ```
 
 2.  **Estrutura de Pastas**
