@@ -23,9 +23,10 @@ services:
       - key: CORS_ALLOWED_ORIGINS
         value: https://btc-frontend.onrender.com
 
-  - type: staticSite
+  - type: web
     name: btc-frontend
     plan: free
+    runtime: static
     buildCommand: cd frontend && npm install && npm run build
     publishDir: ./frontend/dist
     envVars:
