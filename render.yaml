@@ -21,16 +21,15 @@ services:
           property: port
       - key: CORS_ALLOWED_ORIGINS
         fromService:
-          type: staticSite
+          type: web # <-- alterado para web para corresponder ao novo tipo do frontend
           name: btc-frontend
           property: url
 
-  - type: staticSite
+  - type: web
     name: btc-frontend
     plan: free
-    rootDir: frontend
-    buildCommand: npm install && npm run build
-    publishDir: dist
+    runtime: docker
+    dockerfilePath: ./frontend/Dockerfile
     envVars:
       - key: REACT_APP_API_URL
         fromService:
