@@ -21,11 +21,11 @@ services:
           property: port
       - key: CORS_ALLOWED_ORIGINS
         fromService:
-          type: static
+          type: staticSite
           name: btc-frontend
           property: url
 
-  - type: static
+  - type: staticSite
     name: btc-frontend
     plan: free
     rootDir: frontend
