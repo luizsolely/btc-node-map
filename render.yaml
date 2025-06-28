@@ -1,0 +1,39 @@
+services:
+  - type: redis
+    name: btc-redis
+    plan: free
+
+  - type: web
+    name: btc-backend
+    plan: free
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: SPRING_DATA_REDIS_HOST
+        fromService:
+          type: redis
+          name: btc-redis
+          property: host
+      - key: SPRING_DATA_REDIS_PORT
+        fromService:
+          type: redis
+          name: btc-redis
+          property: port
+      - key: CORS_ALLOWED_ORIGINS
+        fromService:
+          type: static
+          name: btc-frontend
+          property: url
+
+  - type: static
+    name: btc-frontend
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: btc-backend
+          property: url

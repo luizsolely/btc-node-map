@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+
+
   application:
     name: btc-node-map
 
@@ -10,9 +12,11 @@ spring:
       host: localhost
       port: 6379
       timeout: 2000
+  graphql:
+    cors:
+      allowed-origins: https://localhost:3000
 
 logging:
   level:
     org.springframework.web: INFO
     org.springframework.data.redis: DEBUG
-
