@@ -9,8 +9,8 @@ services:
     name: btc-backend
     plan: free
     runtime: docker
-    dockerfilePath: Dockerfile
-    buildContext: ./backend
+    dockerfilePath: backend/Dockerfile
+    buildContext: backend
     envVars:
       - key: SPRING_DATA_REDIS_HOST
         fromService:
