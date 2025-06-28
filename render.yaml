@@ -2,7 +2,8 @@ services:
   - type: redis
     name: btc-redis
     plan: free
-    ipAllowList: ["0.0.0.0/0"]
+    ipAllowList:
+      - source: 0.0.0.0/0
 
   - type: web
     name: btc-backend
@@ -28,7 +29,7 @@ services:
     plan: free
     runtime: static
     buildCommand: cd frontend && npm install && npm run build
-    publishDir: ./frontend/dist
+    staticPublishPath: ./frontend/dist
     envVars:
       - key: REACT_APP_API_URL
         value: https://btc-backend.onrender.com
