@@ -2,6 +2,7 @@ services:
   - type: redis
     name: btc-redis
     plan: free
+    ipAllowList: ["0.0.0.0/0"]
 
   - type: web
     name: btc-backend
@@ -20,19 +21,13 @@ services:
           name: btc-redis
           property: port
       - key: CORS_ALLOWED_ORIGINS
-        fromService:
-          type: web # <-- alterado para web para corresponder ao novo tipo do frontend
-          name: btc-frontend
-          property: url
+        value: https://btc-frontend.onrender.com
 
-  - type: web
+  - type: staticSite
     name: btc-frontend
     plan: free
-    runtime: docker
-    dockerfilePath: ./frontend/Dockerfile
+    buildCommand: cd frontend && npm install && npm run build
+    publishDir: ./frontend/dist
     envVars:
       - key: REACT_APP_API_URL
-        fromService:
-          type: web
-          name: btc-backend
-          property: url
+        value: https://btc-backend.onrender.com
