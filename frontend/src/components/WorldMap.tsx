@@ -29,8 +29,9 @@ export default function WorldMap({ onCountryHover, onDataLoaded }: WorldMapProps
   const countryCodeToNumeric: { [key: string]: string } = { 'PR': '630', 'HK': '344', 'HR': '191', 'PT': '620', 'US': '840', 'BR': '076', 'DE': '276', 'JP': '392', 'CA': '124', 'AU': '036', 'FR': '250', 'GB': '826', 'IT': '380', 'CN': '156', 'IN': '356', 'RU': '643', 'ES': '724', 'NL': '528', 'SE': '752', 'NO': '578', 'FI': '246', 'DK': '208', 'CH': '756', 'AT': '040', 'BE': '056', 'PL': '616', 'CZ': '203', 'SK': '703', 'HU': '348', 'RO': '642', 'BG': '100', 'GR': '300', 'TR': '792', 'IL': '376', 'AE': '784', 'SA': '682', 'EG': '818', 'ZA': '710', 'NG': '566', 'KE': '404', 'MX': '484', 'AR': '032', 'CL': '152', 'CO': '170', 'PE': '604', 'VE': '862', 'UY': '858', 'PY': '600', 'BO': '068', 'EC': '218', 'KR': '410', 'TH': '764', 'VN': '704', 'PH': '608', 'MY': '458', 'SG': '702', 'ID': '360', 'NZ': '554', 'ET': '231', 'DJ': '262', 'SO': '706', 'UG': '800', 'RW': '646', 'BA': '070', 'MK': '807', 'RS': '688', 'ME': '499', 'XK': '998', 'TT': '780', 'SS': '728', 'UA': '804' };
 
   useEffect(() => {
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
     axios
-      .get<ResponseData>("http://localhost:8080/nodesByCountry")
+      .get<ResponseData>(`${API_URL}/nodesByCountry`)
       .then((res) => {
         setNodesData(res.data.countryNodes || []);
         onDataLoaded(res.data);
